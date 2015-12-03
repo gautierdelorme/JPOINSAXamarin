@@ -12,19 +12,19 @@ namespace JPOINSA
 			NavigationPage.SetHasBackButton(this, false);
 			ToolbarItem showAllPresentations = new ToolbarItem {
 				Text = "+",
+				Command = new Command (() => Navigation.PushModalAsync (new NavigationPage (new PresentationsPage ()) {
+					BarBackgroundColor = Settings.lightColor,
+					BarTextColor = Color.White
+				}))
 			};
-			showAllPresentations.Clicked += plusButtonClicked;
+
 			ToolbarItems.Add (showAllPresentations);
+
 			Content = new StackLayout {
 				Children = {
 					new Label { Text = "You are well connected !" }
 				}
 			};
-		}
-
-		void plusButtonClicked(object sender, EventArgs e)
-		{
-			Navigation.PushModalAsync (new PresentationsPage ());
 		}
 	}
 }

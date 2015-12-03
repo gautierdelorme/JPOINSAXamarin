@@ -58,6 +58,9 @@ namespace JPOINSA.Droid
 				loginError();
 			}
 		}
+
+		public void getPresentations() {
+		}
 	}
 }
 

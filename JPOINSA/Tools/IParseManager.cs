@@ -1,12 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace JPOINSA
 {
 	public interface IParseManager
 	{
-		void signup(String email, String password, Action signupSuccess, Action signupError);
-		void login(String email, String password, Action loginSuccess, Action loginError);
-		void getPresentations();
+		void signup(string email, string password, Action signupSuccess, Action signupError);
+		void login(string email, string password, Action loginSuccess, Action loginError);
+		void getPresentations(Action<IList<Presentation>> presentations);
 	}
 }
 

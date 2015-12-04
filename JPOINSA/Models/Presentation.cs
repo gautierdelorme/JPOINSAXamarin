@@ -4,12 +4,12 @@ namespace JPOINSA
 {
 	public class Presentation
 	{
-		public String ObjectId {
+		public string ObjectId {
 			get;
 			set;
 		}
 
-		public String Name {
+		public string Name {
 			get;
 			set;
 		}
@@ -24,19 +24,28 @@ namespace JPOINSA
 			set;
 		}
 
-		public Int16 Longitude {
+		public double Latitude {
 			get;
 			set;
 		}
 
-		public Int16 Latitude {
+		public double Longitude {
 			get;
 			set;
 		}
 
-		public Presentation ()
+		public Presentation (string ObjectId, string Name, DateTime Start, DateTime End, double Latitude, double Longitude)
 		{
+			this.ObjectId = ObjectId;
+			this.Name = Name;
+			this.Start = Start;
+			this.End = End;
+			this.Latitude = Latitude;
+			this.Longitude = Longitude;
+		}
+
+		public override string ToString () {
+			return Name + " ("+Latitude+" -- "+Longitude+")";
 		}
 	}
 }
-

@@ -20,12 +20,10 @@ namespace JPOINSA
 
 		public App ()
 		{
-			MainPage = new NavigationPage(new LoginPage ()) {
+			MainPage = new NavigationPage(new PresentationsPage ()) {
 				BarBackgroundColor = Settings.lightColor,
 				BarTextColor = Color.White
 			};
-
-			App.parseManager.getPresentations ();
 		}
 
 		protected override void OnStart ()

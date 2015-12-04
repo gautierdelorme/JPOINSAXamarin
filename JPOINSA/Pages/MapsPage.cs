@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using Xamarin.Forms;
+using Xamarin.Forms.Maps;
 
 namespace JPOINSA
 {
@@ -19,9 +20,18 @@ namespace JPOINSA
 
 		public MapsPage (double Latitude, double Longitude)
 		{
+			var map = new Map(
+				MapSpan.FromCenterAndRadius(
+					new Position(Latitude, Longitude), Distance.FromMiles(0.2))) {
+				IsShowingUser = true,
+				HeightRequest = 100,
+				WidthRequest = 960,
+				VerticalOptions = LayoutOptions.FillAndExpand
+			};
 			Content = new StackLayout { 
 				Children = {
-					new Label { Text = "point (" + Latitude + ", " + Longitude + ")" }
+					map
+					//new Label { Text = "point (" + Latitude + ", " + Longitude + ")" }
 				}
 			};
 		}

@@ -14,6 +14,8 @@ namespace JPOINSA.iOS
 		{
 			global::Xamarin.Forms.Forms.Init ();
 
+			Xamarin.FormsMaps.Init();
+
 			App.parseManager = new ParseManager ();
 
 			LoadApplication (new App ());

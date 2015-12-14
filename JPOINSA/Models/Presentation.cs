@@ -1,4 +1,6 @@
 ﻿using System;
+using Xamarin.Forms;
+using Xamarin.Forms.Maps;
 
 namespace JPOINSA
 {
@@ -14,6 +16,11 @@ namespace JPOINSA
 			set;
 		}
 
+		public string Description {
+			get;
+			set;
+		}
+
 		public DateTime Start {
 			get;
 			set;
@@ -24,28 +31,31 @@ namespace JPOINSA
 			set;
 		}
 
-		public double Latitude {
+		public Position Position {
 			get;
 			set;
 		}
 
-		public double Longitude {
+		public UriImageSource ImageSource {
 			get;
 			set;
 		}
 
-		public Presentation (string ObjectId, string Name, DateTime Start, DateTime End, double Latitude, double Longitude)
+		public Presentation (string ObjectId, string Name, string Description, DateTime Start, DateTime End, double Latitude, double Longitude, Uri urlImage)
 		{
+			this.ImageSource = new UriImageSource {
+				Uri =urlImage
+			};
 			this.ObjectId = ObjectId;
 			this.Name = Name;
+			this.Description = Description;
 			this.Start = Start;
 			this.End = End;
-			this.Latitude = Latitude;
-			this.Longitude = Longitude;
+			this.Position = new Position (Latitude, Longitude);
 		}
 
 		public override string ToString () {
-			return Name + " ("+Latitude+" -- "+Longitude+")";
+			return Name;
 		}
 	}
 }

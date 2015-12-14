@@ -16,10 +16,6 @@ namespace JPOINSA
 		public PresentationsPage ()
 		{
 			Title = "Presentations";
-			/*ToolbarItems.Add (new ToolbarItem {
-				Text = "Done",
-				Command = new Command (() => Navigation.PopModalAsync())
-			});*/
 
 			App.parseManager.getPresentations ((IList<Presentation> presentations) => loadPresentations (presentations));
 
@@ -27,26 +23,23 @@ namespace JPOINSA
 			listView = new ListView ();
 			listView.ItemsSource = listViewModel;
 			listView.ItemTemplate = new DataTemplate (typeof(PresentationCell));
-
-			listView.ItemTapped += showMaps;
+			listView.RowHeight = 100;
+			listView.ItemTapped += showPresentation;
 
 			Content = listView;
 		}
 
-		void showMaps(object sender, ItemTappedEventArgs e)
+		void showPresentation(object sender, ItemTappedEventArgs e)
 		{
-			Navigation.PushAsync (new MapsPage (
-				(e.Item as Presentation).Latitude,
-				(e.Item as Presentation).Longitude)
-			);
+			Navigation.PushAsync (new PresentationPage (
+				(e.Item as Presentation)
+			));
 			((ListView)sender).SelectedItem = null; // de-select the row
-			//await DisplayAlert("Tapped", e.Item + " row was tapped", "OK");
 		}
 
 		void loadPresentations(IList<Presentation> presentations)
 		{
 			foreach (Presentation p in presentations) {
-				Debug.WriteLine (p);
 				listViewModel.Add (p);
 			}
 		}

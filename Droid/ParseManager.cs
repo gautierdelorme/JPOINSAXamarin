@@ -78,13 +78,16 @@ namespace JPOINSA.Droid
 
 		private Presentation parseToPresentation (ParseObject obj) {
 			ParseGeoPoint geoPoint = obj.Get<ParseGeoPoint> ("location");
+			ParseFile image = obj.Get<ParseFile> ("image");
 			return new Presentation (
 				obj.ObjectId,
 				obj.Get<string> ("name"),
+				obj.Get<string> ("description"),
 				obj.Get<DateTime> ("start"),
 				obj.Get<DateTime> ("end"),
 				geoPoint.Latitude,
-				geoPoint.Longitude
+				geoPoint.Longitude,
+				image.Url
 			);
 		}
 
